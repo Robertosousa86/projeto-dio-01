@@ -3,7 +3,7 @@ import redisCongig from '../../config/redis';
 
 import * as jobs from '../jobs';
 
-const queues = Object.keys.values(jobs).map(job => ({
+const queues = Object.values(jobs).map(job => ({
     bull: new Queue(job.key, redisCongig),
     name: job.key,
     handle: job.handle,
